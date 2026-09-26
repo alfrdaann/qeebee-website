@@ -15,13 +15,15 @@ export const COMPANY_INFO = {
   },
   operatingHours: "07.00 - 17.00",
   shipping: "All Indonesia",
-  logoPath: "/assets/logo/qeebee-logo.jpeg",
+  logoPath: "/assets/logo/qeebee-logo-gold.png",
 } as const;
 
 export const NAV_LINKS = [
   { label: "Beranda", href: "#" },
+  { label: "Kategori Produk", href: "/produk" },
   { label: "Tentang Kami", href: "#tentang-kami" },
-  { label: "Produk & Layanan", href: "#produk" },
   { label: "Portofolio", href: "#portofolio" },
-  { label: "Kontak", href: "#kontak" },
+  { label: "Keunggulan", href: "#keunggulan" },
+  { label: "Alur Produksi", href: "#alur-produksi" },
+  { label: "Kontak", href: "/kontak" },
 ] as const;

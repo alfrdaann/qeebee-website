@@ -46,30 +46,30 @@ export const Navbar: React.FC = () => {
       {/* Main Navigation Bar */}
       <div className="border-b border-[#E5E5E5] bg-white">
         <Container className="flex items-center justify-between h-20">
-          {/* Logo & Brand Identity */}
-          <Link href="/" className="flex items-center gap-3 group">
-            <div className="relative h-12 w-32 sm:w-44 flex items-center">
+          {/* Approved Gold Logo & Brand Identity */}
+          <Link href="/" className="flex items-center gap-2 group shrink-0">
+            <div className="relative h-11 w-36 sm:h-12 sm:w-44 flex items-center">
               <Image
                 src={COMPANY_INFO.logoPath}
-                alt={`${COMPANY_INFO.name} Logo`}
+                alt={`${COMPANY_INFO.name} Official Logo`}
                 fill
                 priority
                 className="object-contain object-left"
-                sizes="(max-width: 640px) 128px, 176px"
+                sizes="(max-width: 640px) 144px, 176px"
               />
             </div>
           </Link>
 
           {/* Desktop Nav Links */}
-          <nav className="hidden lg:flex items-center gap-8">
+          <nav className="hidden xl:flex items-center gap-7">
             {NAV_LINKS.map((link) => (
-              <a
+              <Link
                 key={link.label}
                 href={link.href}
                 className="text-sm font-medium text-[#111111] hover:text-[#FF6A00] transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-[#FF6A00] hover:after:w-full after:transition-all after:duration-200"
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
           </nav>
 
@@ -81,12 +81,12 @@ export const Navbar: React.FC = () => {
               size="md"
               leftIcon={<MessageCircle className="w-4 h-4" />}
             >
-              Hubungi via WhatsApp
+              Konsultasi WhatsApp
             </Button>
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="flex lg:hidden items-center gap-2">
+          <div className="flex xl:hidden items-center gap-2">
             <Button
               href={COMPANY_INFO.whatsappUrl}
               variant="primary"
@@ -115,18 +115,18 @@ export const Navbar: React.FC = () => {
 
       {/* Mobile Menu Drawer */}
       {mobileMenuOpen && (
-        <div className="lg:hidden border-b border-[#E5E5E5] bg-white animate-in slide-in-from-top duration-200">
+        <div className="xl:hidden border-b border-[#E5E5E5] bg-white">
           <Container className="py-4 space-y-3">
             <nav className="flex flex-col space-y-1">
               {NAV_LINKS.map((link) => (
-                <a
+                <Link
                   key={link.label}
                   href={link.href}
                   onClick={() => setMobileMenuOpen(false)}
                   className="px-3 py-2.5 rounded-md text-base font-medium text-[#111111] hover:bg-[#F5F5F5] hover:text-[#FF6A00] transition-colors"
                 >
                   {link.label}
-                </a>
+                </Link>
               ))}
             </nav>
 
