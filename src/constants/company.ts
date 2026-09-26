@@ -22,7 +22,7 @@ export const NAV_LINKS = [
   { label: "Beranda", href: "#" },
   { label: "Kategori Produk", href: "/produk" },
   { label: "Tentang Kami", href: "#tentang-kami" },
-  { label: "Portofolio", href: "#portofolio" },
+  { label: "Portofolio", href: "/portofolio" },
   { label: "Keunggulan", href: "#keunggulan" },
   { label: "Alur Produksi", href: "#alur-produksi" },
   { label: "Kontak", href: "/kontak" },
