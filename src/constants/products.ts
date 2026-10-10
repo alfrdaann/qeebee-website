@@ -69,6 +69,12 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
     description: "Rompi lapangan, safety vest reflective, dan rompi dinas dengan saku fungsional.",
     image: "/assets/products/batch-3/WhatsApp Image 2026-09-26 at 07.35.12 (1).jpeg",
   },
+  {
+    id: "lainnya",
+    name: "Lainnya",
+    description: "Aksesori konveksi, celemek, pouch, souvenir, dan kebutuhan apparel khusus lainnya.",
+    image: "/assets/products/batch-1/WhatsApp Image 2026-09-26 at 07.29.23.jpeg",
+  },
 ];
 
 export const PORTFOLIO_ITEMS: PortfolioItem[] = [

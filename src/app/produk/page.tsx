@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { ArrowRight, MessageCircle } from "lucide-react";
+import Link from "next/link";
+import { ArrowRight, MessageCircle, FileText } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { PRODUCT_CATEGORIES } from "@/constants/products";
@@ -9,37 +10,38 @@ import { COMPANY_INFO } from "@/constants/company";
 export const metadata: Metadata = {
   title: `Katalog Produk | ${COMPANY_INFO.name} - Konveksi & Apparel Custom Sidoarjo`,
   description: `Katalog lengkap ${COMPANY_INFO.name}: kaos, polo, jaket & hoodie, training pack, kemeja seragam, jersey, topi, tas, dan rompi custom. Produksi konveksi Sidoarjo sejak ${COMPANY_INFO.established}, pengiriman ${COMPANY_INFO.shipping}.`,
-  keywords: [
-    "katalog produk konveksi",
-    "kaos custom sidoarjo",
-    "polo shirt custom",
-    "jaket custom",
-    "seragam kerja",
-    "jersey custom",
-  ],
 };
-
-const waCategoryUrl = (categoryName: string) =>
-  `${COMPANY_INFO.whatsappUrl}?text=${encodeURIComponent(
-    `Halo ${COMPANY_INFO.name}, saya ingin konsultasi pesanan ${categoryName} custom.`
-  )}`;
 
 export default function ProdukPage() {
   return (
     <>
       {/* Page Header */}
-      <section className="bg-[#111111] text-white">
-        <Container className="py-16 sm:py-20">
-          <span className="text-xs font-bold text-[#FF6A00] uppercase tracking-wider">
-            Katalog Produk
-          </span>
-          <h1 className="mt-3 text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight">
-            Kategori Produk Custom
-          </h1>
-          <p className="mt-4 max-w-2xl text-base sm:text-lg text-neutral-300 leading-relaxed">
-            Beragam apparel custom yang dapat diproduksi sesuai kebutuhan instansi,
-            perusahaan, dan komunitas. Pilih kategori untuk memulai konsultasi.
-          </p>
+      <section className="bg-[#111111] text-white py-16 sm:py-20 border-b border-[#222222]">
+        <Container>
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+            <div className="space-y-3 max-w-2xl">
+              <span className="text-xs font-bold text-[#FF6A00] uppercase tracking-wider">
+                Katalog Produk &amp; Layanan
+              </span>
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight">
+                Kategori Produk Apparel Custom
+              </h1>
+              <p className="text-base sm:text-lg text-neutral-300 leading-relaxed">
+                Pilihan apparel konveksi terbaik untuk instansi, perusahaan, sekolah, dan komunitas. Pilih kategori untuk melihat spesifikasi detail atau langsung ajukan penawaran harga.
+              </p>
+            </div>
+            <div className="shrink-0">
+              <Button
+                href="/request-quote"
+                variant="primary"
+                size="lg"
+                className="font-bold shadow-xs"
+                leftIcon={<FileText className="w-4 h-4" />}
+              >
+                Request Penawaran Harga
+              </Button>
+            </div>
+          </div>
         </Container>
       </section>
 
@@ -50,35 +52,47 @@ export default function ProdukPage() {
             {PRODUCT_CATEGORIES.map((category) => (
               <div
                 key={category.id}
-                className="group bg-white rounded-xl border border-[#E5E5E5] overflow-hidden hover:border-[#FF6A00]/40 hover:shadow-md transition-all duration-300 flex flex-col"
+                className="group bg-white rounded-2xl border border-[#E5E5E5] overflow-hidden hover:border-[#FF6A00]/40 hover:shadow-md transition-all duration-300 flex flex-col justify-between"
               >
-                <div className="relative aspect-[4/3] w-full bg-[#F5F5F5] overflow-hidden">
-                  <Image
-                    src={category.image}
-                    alt={`Produk ${category.name} - ${COMPANY_INFO.name}`}
-                    fill
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    className="object-cover transition-transform duration-300 group-hover:scale-105"
-                  />
-                </div>
-                <div className="p-5 sm:p-6 flex flex-col flex-1">
-                  <h2 className="text-lg font-bold text-[#111111] tracking-tight">
-                    {category.name}
-                  </h2>
-                  <p className="mt-2 text-sm text-neutral-600 leading-relaxed flex-1">
-                    {category.description}
-                  </p>
-                  <div className="mt-5 pt-4 border-t border-[#E5E5E5]">
-                    <a
-                      href={waCategoryUrl(category.name)}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#111111] group-hover:text-[#FF6A00] transition-colors"
-                    >
-                      <span>Konsultasi {category.name}</span>
-                      <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-                    </a>
+                <div>
+                  <Link
+                    href={`/produk/${category.id}`}
+                    className="block relative aspect-[4/3] w-full bg-[#FBFBFB] overflow-hidden border-b border-[#EBEBEB]"
+                  >
+                    <Image
+                      src={category.image}
+                      alt={`Produk ${category.name} - ${COMPANY_INFO.name}`}
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      className="object-contain p-6 transition-transform duration-300 group-hover:scale-105"
+                    />
+                  </Link>
+                  <div className="p-5 sm:p-6 space-y-2">
+                    <h2 className="text-lg font-bold text-[#111111] group-hover:text-[#FF6A00] transition-colors">
+                      <Link href={`/produk/${category.id}`}>{category.name}</Link>
+                    </h2>
+                    <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed line-clamp-2">
+                      {category.description}
+                    </p>
                   </div>
+                </div>
+
+                <div className="p-5 sm:p-6 pt-0 border-t border-[#F0F0F0] mt-3 pt-4 flex items-center justify-between gap-3">
+                  <Link
+                    href={`/produk/${category.id}`}
+                    className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-[#111111] hover:text-[#FF6A00] transition-colors"
+                  >
+                    <span>Spesifikasi</span>
+                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                  </Link>
+
+                  <Link
+                    href={`/request-quote?kategori=${encodeURIComponent(category.name)}`}
+                    className="inline-flex items-center gap-1 text-xs font-bold px-3 py-1.5 rounded-lg bg-[#FF6A00]/10 text-[#FF6A00] hover:bg-[#FF6A00] hover:text-white transition-colors"
+                  >
+                    <FileText className="w-3 h-3" />
+                    <span>Penawaran</span>
+                  </Link>
                 </div>
               </div>
             ))}
@@ -87,23 +101,37 @@ export default function ProdukPage() {
       </section>
 
       {/* Bottom CTA */}
-      <section className="bg-white py-12 sm:py-16 border-t border-[#E5E5E5]">
-        <Container className="text-center space-y-5">
-          <h2 className="text-2xl sm:text-3xl font-bold text-[#111111] tracking-tight">
-            Tidak Menemukan Kategori yang Dibutuhkan?
+      <section className="bg-white py-14 sm:py-20 border-t border-[#E5E5E5]">
+        <Container className="text-center space-y-6 max-w-3xl">
+          <span className="text-xs font-bold text-[#FF6A00] uppercase tracking-wider">
+            Konsultasi &amp; Penawaran Langsung
+          </span>
+          <h2 className="text-2xl sm:text-4xl font-extrabold text-[#111111] tracking-tight leading-tight">
+            Tidak Menemukan Kategori yang Anda Butuhkan?
           </h2>
-          <p className="max-w-2xl mx-auto text-sm sm:text-base text-neutral-600 leading-relaxed">
-            Sampaikan kebutuhan apparel Anda melalui WhatsApp. Tim kami siap
-            membantu menentukan produk, bahan, dan spesifikasi yang sesuai.
+          <p className="text-sm sm:text-base text-neutral-600 leading-relaxed">
+            CV. QEE BEE melayani berbagai pesanan apparel custom khusus di luar kategori di atas. Ajukan spesifikasi lengkap via formulir penawaran atau konsultasi langsung dengan customer service kami.
           </p>
-          <Button
-            href={COMPANY_INFO.whatsappUrl}
-            variant="primary"
-            size="lg"
-            leftIcon={<MessageCircle className="w-4 h-4" />}
-          >
-            Konsultasi via WhatsApp
-          </Button>
+          <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3.5">
+            <Button
+              href="/request-quote"
+              variant="primary"
+              size="lg"
+              className="w-full sm:w-auto font-bold shadow-xs"
+              leftIcon={<FileText className="w-4 h-4" />}
+            >
+              Isi Formulir Penawaran
+            </Button>
+            <Button
+              href={COMPANY_INFO.whatsappUrl}
+              variant="whatsapp"
+              size="lg"
+              className="w-full sm:w-auto font-bold"
+              leftIcon={<MessageCircle className="w-4 h-4" />}
+            >
+              Konsultasi via WhatsApp
+            </Button>
+          </div>
         </Container>
       </section>
     </>

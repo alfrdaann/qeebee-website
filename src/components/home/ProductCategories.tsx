@@ -1,67 +1,61 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { PRODUCT_CATEGORIES } from "@/constants/products";
 import { ArrowRight } from "lucide-react";
 
 export const ProductCategories: React.FC = () => {
   return (
-    <section id="produk" className="py-16 sm:py-24 bg-[#F5F5F5]">
-      <Container className="space-y-12">
+    <section id="produk" className="py-14 sm:py-20 bg-[#F5F5F5]">
+      <Container className="space-y-8 sm:space-y-10">
         {/* Section Header */}
-        <div className="max-w-2xl space-y-3">
-          <div className="inline-block text-xs font-bold text-[#FF6A00] uppercase tracking-wider">
-            Katalog Konveksi
+        <div className="flex flex-row items-end justify-between gap-4">
+          <div className="space-y-1.5">
+            <span className="text-xs font-bold text-[#FF6A00] uppercase tracking-wider">
+              KATEGORI PRODUK
+            </span>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#111111] tracking-tight">
+              Pilihan Produk Kami
+            </h2>
           </div>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#111111] tracking-tight">
-            Kategori Produk Kami
-          </h2>
-          <p className="text-sm sm:text-base text-neutral-600 leading-relaxed">
-            Berbagai pilihan apparel dan kebutuhan konveksi yang dapat disesuaikan dengan kebutuhan Anda.
-          </p>
+
+          <Link
+            href="/produk"
+            className="inline-flex items-center gap-1 text-xs sm:text-sm font-semibold text-neutral-600 hover:text-[#FF6A00] transition-colors shrink-0 pb-1"
+          >
+            <span>Lihat Semua</span>
+            <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+          </Link>
         </div>
 
-        {/* 9 Product Categories Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        {/* 10 Category Cards Grid: 5 cols desktop, 3 cols tablet, 2 cols mobile */}
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3.5 sm:gap-5">
           {PRODUCT_CATEGORIES.map((cat) => (
-            <div
+            <Link
               key={cat.id}
-              className="group bg-white rounded-xl border border-[#E5E5E5] overflow-hidden hover:border-[#FF6A00]/50 hover:shadow-md transition-all duration-300 flex flex-col"
+              href={`/produk`}
+              className="group bg-white rounded-xl border border-[#E5E5E5] overflow-hidden hover:border-[#FF6A00]/50 hover:shadow-md transition-all duration-200 flex flex-col justify-between"
             >
-              {/* Product Image with Consistent Aspect Ratio */}
-              <div className="relative aspect-[4/3] w-full bg-[#F5F5F5] overflow-hidden">
+              {/* Image Container */}
+              <div className="relative aspect-[4/3] w-full bg-[#F9F9F9] overflow-hidden">
                 <Image
                   src={cat.image}
                   alt={`${cat.name} CV QEE BEE`}
                   fill
-                  className="object-contain p-4 group-hover:scale-105 transition-transform duration-300"
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  className="object-contain p-3 sm:p-4 group-hover:scale-105 transition-transform duration-300"
+                  sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
                 />
               </div>
 
-              {/* Card Body */}
-              <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
-                <div className="space-y-2">
-                  <h3 className="text-lg font-bold text-[#111111] group-hover:text-[#FF6A00] transition-colors">
-                    {cat.name}
-                  </h3>
-                  <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed">
-                    {cat.description}
-                  </p>
-                </div>
-
-                {/* Subtle Action Link */}
-                <div className="pt-2 border-t border-[#E5E5E5]">
-                  <a
-                    href="#produk"
-                    className="inline-flex items-center text-xs font-semibold text-[#111111] group-hover:text-[#FF6A00] transition-colors gap-1.5"
-                  >
-                    <span>Lihat Produk</span>
-                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-                  </a>
-                </div>
+              {/* Bottom Label & Arrow Indicator */}
+              <div className="p-3 sm:p-4 bg-white border-t border-[#F0F0F0] flex items-center justify-between gap-2">
+                <span className="text-xs sm:text-sm font-bold text-[#111111] group-hover:text-[#FF6A00] transition-colors truncate">
+                  {cat.name}
+                </span>
+                <ArrowRight className="w-3.5 h-3.5 text-neutral-400 group-hover:text-[#FF6A00] group-hover:translate-x-0.5 transition-all shrink-0" />
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </Container>

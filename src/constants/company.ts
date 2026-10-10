@@ -19,11 +19,13 @@ export const COMPANY_INFO = {
 } as const;
 
 export const NAV_LINKS = [
-  { label: "Beranda", href: "#" },
+  { label: "Beranda", href: "/" },
   { label: "Kategori Produk", href: "/produk" },
-  { label: "Tentang Kami", href: "#tentang-kami" },
+  { label: "Bahan", href: "/bahan" },
+  { label: "Layanan", href: "/layanan" },
+  { label: "Tentang Kami", href: "/tentang-kami" },
   { label: "Portofolio", href: "/portofolio" },
-  { label: "Keunggulan", href: "#keunggulan" },
-  { label: "Alur Produksi", href: "#alur-produksi" },
+  { label: "Cara Order", href: "/cara-order" },
+  { label: "FAQ", href: "/faq" },
   { label: "Kontak", href: "/kontak" },
 ] as const;

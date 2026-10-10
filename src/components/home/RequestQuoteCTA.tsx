@@ -2,55 +2,43 @@ import React from "react";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { COMPANY_INFO } from "@/constants/company";
-import { MessageCircle, FileText, Phone, Clock } from "lucide-react";
+import { MessageCircle, FileText, ArrowRight } from "lucide-react";
 
 export const RequestQuoteCTA: React.FC = () => {
   return (
-    <section className="py-16 sm:py-20 bg-[#FF6A00] text-white">
+    <section className="py-14 sm:py-20 bg-[#FF6A00] text-white">
       <Container>
         <div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12">
-          {/* Headline & Supporting Text */}
-          <div className="space-y-4 max-w-2xl text-center lg:text-left">
+          {/* Left Text */}
+          <div className="space-y-3 max-w-2xl text-center lg:text-left">
             <h2 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight leading-tight">
-              Punya Kebutuhan Apparel Custom?
+              Siap Membuat Apparel Custom untuk Kebutuhan Anda?
             </h2>
-            <p className="text-base sm:text-lg text-white/90 leading-relaxed font-normal">
-              Konsultasikan kebutuhan produksi Anda dengan CV. QEE BEE.
+            <p className="text-sm sm:text-base text-white/95 leading-relaxed font-normal">
+              Konsultasikan kebutuhan apparel Anda sekarang juga. Tim kami siap membantu memberikan solusi terbaik.
             </p>
-            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 text-xs text-white/80 pt-1">
-              <span className="flex items-center gap-1.5">
-                <Clock className="w-3.5 h-3.5" />
-                Jam Kerja: {COMPANY_INFO.operatingHours} WIB
-              </span>
-              <span>&bull;</span>
-              <span className="flex items-center gap-1.5">
-                <Phone className="w-3.5 h-3.5" />
-                {COMPANY_INFO.whatsapp}
-              </span>
-            </div>
           </div>
 
-          {/* Action Buttons */}
-          <div className="flex flex-col sm:flex-row items-center gap-3.5 w-full sm:w-auto shrink-0">
+          {/* Right Action Buttons */}
+          <div className="flex flex-col sm:flex-row lg:flex-col items-stretch sm:items-center lg:items-stretch gap-3 w-full sm:w-auto shrink-0 min-w-[220px]">
             <Button
-              href={COMPANY_INFO.whatsappUrl}
-              variant="secondary"
+              href="/request-quote"
+              variant="outline"
               size="lg"
-              fullWidth
-              className="bg-[#111111] hover:bg-black text-white shadow-sm border border-black"
+              className="bg-white text-[#FF6A00] hover:bg-neutral-100 hover:text-[#e55f00] border-white shadow-sm font-semibold justify-center"
               leftIcon={<FileText className="w-4 h-4 text-[#FF6A00]" />}
+              rightIcon={<ArrowRight className="w-4 h-4 text-[#FF6A00]" />}
             >
-              Request Quote
+              Request Penawaran
             </Button>
             <Button
               href={COMPANY_INFO.whatsappUrl}
               variant="outline"
               size="lg"
-              fullWidth
-              className="bg-white text-[#111111] hover:bg-neutral-100 hover:text-black border-white shadow-sm font-semibold"
-              leftIcon={<MessageCircle className="w-4 h-4 text-[#25D366]" />}
+              className="bg-[#e55f00]/30 border-white/40 text-white hover:bg-[#e55f00]/60 hover:border-white justify-center font-medium"
+              leftIcon={<MessageCircle className="w-4 h-4 text-white/80" />}
             >
-              WhatsApp
+              Konsultasi WhatsApp
             </Button>
           </div>
         </div>
