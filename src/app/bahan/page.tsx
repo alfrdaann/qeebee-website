@@ -117,7 +117,7 @@ export default function BahanPage() {
             {MATERIALS_DATA.map((mat) => (
               <div
                 key={mat.id}
-                className="bg-white rounded-xl border border-[#E5E5E5] overflow-hidden hover:border-[#FF6A00]/40 transition-all duration-200 flex flex-col justify-between"
+                className="interactive-card group bg-white rounded-xl border border-[#E5E5E5] overflow-hidden hover:border-[#FF6A00]/40 flex flex-col justify-between"
               >
                 <div>
                   <div className="relative aspect-[16/10] w-full bg-[#F9F9F9] border-b border-[#E5E5E5]">

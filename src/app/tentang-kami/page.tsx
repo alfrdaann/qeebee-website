@@ -73,7 +73,7 @@ export default function TentangKamiPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="p-6 rounded-xl bg-[#F5F5F5] border border-[#E5E5E5] space-y-3">
+            <div className="interactive-card-subtle p-6 rounded-xl bg-[#F5F5F5] border border-[#E5E5E5] space-y-3">
               <div className="p-2.5 rounded-lg bg-[#FF6A00]/10 text-[#FF6A00] w-fit">
                 <ShieldCheck className="w-6 h-6" />
               </div>
@@ -83,7 +83,7 @@ export default function TentangKamiPage() {
               </p>
             </div>
 
-            <div className="p-6 rounded-xl bg-[#F5F5F5] border border-[#E5E5E5] space-y-3">
+            <div className="interactive-card-subtle p-6 rounded-xl bg-[#F5F5F5] border border-[#E5E5E5] space-y-3">
               <div className="p-2.5 rounded-lg bg-[#FF6A00]/10 text-[#FF6A00] w-fit">
                 <Truck className="w-6 h-6" />
               </div>
@@ -93,7 +93,7 @@ export default function TentangKamiPage() {
               </p>
             </div>
 
-            <div className="p-6 rounded-xl bg-[#F5F5F5] border border-[#E5E5E5] space-y-3">
+            <div className="interactive-card-subtle p-6 rounded-xl bg-[#F5F5F5] border border-[#E5E5E5] space-y-3">
               <div className="p-2.5 rounded-lg bg-[#FF6A00]/10 text-[#FF6A00] w-fit">
                 <Clock className="w-6 h-6" />
               </div>

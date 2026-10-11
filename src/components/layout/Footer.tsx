@@ -1,141 +1,213 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { MapPin, Phone, Clock, Truck, MessageCircle } from "lucide-react";
+import { MapPin, Clock, MessageCircle } from "lucide-react";
 import { Container } from "@/components/ui/Container";
-import { COMPANY_INFO, NAV_LINKS } from "@/constants/company";
+import { COMPANY_INFO, NAV_LINKS, SOCIAL_LINKS } from "@/constants/company";
+import { InstagramIcon, TikTokIcon, FacebookIcon } from "@/components/ui/SocialIcons";
 
 export const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
 
+  const renderSocialIcon = (name: string, size: number = 20) => {
+    switch (name) {
+      case "Instagram":
+        return <InstagramIcon size={size} />;
+      case "TikTok":
+        return <TikTokIcon size={size} />;
+      case "Facebook":
+        return <FacebookIcon size={size} />;
+      default:
+        return null;
+    }
+  };
+
+  // Split navigation links into two sub-columns
+  const leftLinks = [
+    NAV_LINKS.find((l) => l.label === "Beranda") || { label: "Beranda", href: "/" },
+    NAV_LINKS.find((l) => l.label === "Kategori Produk") || { label: "Kategori Produk", href: "/produk" },
+    NAV_LINKS.find((l) => l.label === "Bahan") || { label: "Bahan", href: "/bahan" },
+    NAV_LINKS.find((l) => l.label === "Layanan") || { label: "Layanan", href: "/layanan" },
+    NAV_LINKS.find((l) => l.label === "Portofolio") || { label: "Portofolio", href: "/portofolio" },
+  ];
+
+  const rightLinks = [
+    NAV_LINKS.find((l) => l.label === "Tentang Kami") || { label: "Tentang Kami", href: "/tentang-kami" },
+    NAV_LINKS.find((l) => l.label === "Cara Order") || { label: "Cara Order", href: "/cara-order" },
+    NAV_LINKS.find((l) => l.label === "FAQ") || { label: "FAQ", href: "/faq" },
+    NAV_LINKS.find((l) => l.label === "Kontak") || { label: "Kontak", href: "/kontak" },
+  ];
+
+  // Specific styles for large social circles in Column 4
+  const getSocialStyle = (name: string) => {
+    switch (name) {
+      case "Instagram":
+        return "bg-gradient-to-tr from-[#F58529] via-[#DD2A7B] to-[#8134AF] text-white hover:opacity-90 shadow-md";
+      case "TikTok":
+        return "bg-neutral-800 text-white border border-neutral-700 hover:bg-neutral-700";
+      case "Facebook":
+        return "bg-[#1877F2] text-white hover:bg-[#166fe5]";
+      default:
+        return "bg-neutral-800 text-white";
+    }
+  };
+
   return (
-    <footer id="kontak" className="bg-[#111111] text-white border-t border-[#222222]">
+    <footer className="bg-[#0A0A0A] text-white border-t border-neutral-800">
       {/* Main Footer Content */}
       <div className="py-12 sm:py-16">
         <Container>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-10">
-            {/* Col 1: Gold Logo, Description, Social Icons */}
-            <div className="lg:col-span-4 space-y-4">
-              <div className="relative h-11 w-40 sm:h-12 sm:w-44">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
+            {/* Column 1 — Brand QEE BEE */}
+            <div className="space-y-4">
+              <div className="relative h-12 w-44">
                 <Image
                   src={COMPANY_INFO.logoPath}
-                  alt={`${COMPANY_INFO.name} Official Logo`}
+                  alt={COMPANY_INFO.name}
                   fill
                   sizes="(max-width: 640px) 160px, 176px"
                   className="object-contain object-left"
                 />
               </div>
-              <p className="text-xs sm:text-sm text-neutral-400 leading-relaxed max-w-sm">
-                Mitra terpercaya untuk kebutuhan apparel custom dan konveksi berkualitas di seluruh Indonesia.
+
+              <p className="text-sm text-neutral-400 leading-relaxed">
+                Solusi konveksi berkualitas untuk berbagai kebutuhan Anda, dengan hasil terbaik dan tepat waktu.
               </p>
-              <div className="flex items-center gap-3 pt-1">
-                {/* Instagram SVG */}
-                <a
-                  href="https://instagram.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Instagram"
-                  className="p-2 rounded-lg bg-neutral-900 border border-neutral-800 text-neutral-400 hover:text-[#FF6A00] hover:border-[#FF6A00]/50 transition-colors"
-                >
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                    <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
-                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-                    <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
-                  </svg>
-                </a>
-                {/* YouTube SVG */}
-                <a
-                  href="https://youtube.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="YouTube"
-                  className="p-2 rounded-lg bg-neutral-900 border border-neutral-800 text-neutral-400 hover:text-[#FF6A00] hover:border-[#FF6A00]/50 transition-colors"
-                >
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                    <path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/>
-                    <polygon points="10 15 15 12 10 9 10 15"/>
-                  </svg>
-                </a>
-              </div>
-            </div>
 
-            {/* Col 2: Navigation Links */}
-            <div className="lg:col-span-2 space-y-3">
-              <h3 className="text-xs font-bold text-white uppercase tracking-wider">
-                Navigasi
-              </h3>
-              <ul className="space-y-2 text-xs sm:text-sm">
-                {NAV_LINKS.map((link) => (
-                  <li key={link.label}>
-                    <Link
-                      href={link.href}
-                      className="text-neutral-400 hover:text-[#FF6A00] transition-colors"
+              <div className="pt-2 space-y-2.5">
+                <span className="text-xs font-bold text-neutral-400 uppercase tracking-wider block">
+                  MEDIA SOSIAL RESMI
+                </span>
+                <div className="flex items-center gap-2.5">
+                  {SOCIAL_LINKS.map((item) => (
+                    <a
+                      key={item.name}
+                      href={item.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={item.label}
+                      title={item.label}
+                      className="p-2.5 rounded-lg bg-neutral-800 border border-neutral-700 text-neutral-300 hover:border-[#FF6A00]/50 hover:text-[#FF6A00] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6A00]"
                     >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Col 3: Information & Address */}
-            <div className="lg:col-span-3 space-y-3">
-              <h3 className="text-xs font-bold text-white uppercase tracking-wider">
-                Informasi
-              </h3>
-              <div className="space-y-2.5 text-xs sm:text-sm text-neutral-400">
-                <div className="flex items-start gap-2">
-                  <MapPin className="w-4 h-4 text-[#FF6A00] shrink-0 mt-0.5" />
-                  <span className="leading-relaxed">
-                    {COMPANY_INFO.address.full}
-                  </span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Clock className="w-4 h-4 text-[#FF6A00] shrink-0" />
-                  <span>Jam Operasional: {COMPANY_INFO.operatingHours} WIB</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Truck className="w-4 h-4 text-[#FF6A00] shrink-0" />
-                  <span>Pengiriman: {COMPANY_INFO.shipping}</span>
+                      {renderSocialIcon(item.name, 20)}
+                    </a>
+                  ))}
                 </div>
               </div>
             </div>
 
-            {/* Col 4: Contact & WhatsApp */}
-            <div className="lg:col-span-3 space-y-3">
-              <h3 className="text-xs font-bold text-white uppercase tracking-wider">
-                Hubungi Kami
+            {/* Column 2 — Quick Link (Navigation) */}
+            <div className="space-y-4">
+              <h3 className="text-sm font-bold text-white uppercase tracking-wider">
+                Quick Link
               </h3>
-              <div className="space-y-3">
+              <div className="grid grid-cols-2 gap-4">
+                {/* Left Sub-column */}
+                <ul className="space-y-2.5">
+                  {leftLinks.map((link) => (
+                    <li key={link.href}>
+                      <Link
+                        href={link.href}
+                        className="text-neutral-400 hover:text-[#FF6A00] text-sm flex items-center transition-colors group"
+                      >
+                        <span className="text-neutral-500 group-hover:text-[#FF6A00] mr-1.5 transition-colors font-semibold">
+                          &gt;
+                        </span>
+                        <span>{link.label}</span>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+
+                {/* Right Sub-column */}
+                <ul className="space-y-2.5">
+                  {rightLinks.map((link) => (
+                    <li key={link.href}>
+                      <Link
+                        href={link.href}
+                        className="text-neutral-400 hover:text-[#FF6A00] text-sm flex items-center transition-colors group"
+                      >
+                        <span className="text-neutral-500 group-hover:text-[#FF6A00] mr-1.5 transition-colors font-semibold">
+                          &gt;
+                        </span>
+                        <span>{link.label}</span>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            {/* Column 3 — Kontak Kami */}
+            <div className="space-y-4">
+              <h3 className="text-sm font-bold text-white uppercase tracking-wider">
+                Kontak Kami
+              </h3>
+              <div className="space-y-3.5">
+                {/* WhatsApp */}
                 <a
                   href={COMPANY_INFO.whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2.5 p-3 rounded-lg bg-neutral-900 border border-neutral-800 text-white hover:border-[#FF6A00]/50 transition-colors"
+                  className="flex items-start gap-2.5 text-sm text-neutral-400 hover:text-white transition-colors group"
                 >
-                  <Phone className="w-4 h-4 text-[#FF6A00]" />
-                  <span className="text-xs sm:text-sm font-semibold">{COMPANY_INFO.whatsapp}</span>
+                  <div className="w-5 h-5 rounded-full bg-[#25D366] text-white flex items-center justify-center shrink-0 mt-0.5">
+                    <MessageCircle className="w-3.5 h-3.5 fill-current" />
+                  </div>
+                  <span className="group-hover:text-[#FF6A00] transition-colors">
+                    {COMPANY_INFO.whatsapp}
+                  </span>
                 </a>
-                <a
-                  href={COMPANY_INFO.whatsappUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 w-full px-4 py-2.5 rounded-lg border border-neutral-700 text-xs sm:text-sm font-medium text-white hover:border-white hover:bg-white/5 transition-colors"
-                >
-                  <MessageCircle className="w-4 h-4 text-[#FF6A00]" />
-                  <span>Konsultasi WhatsApp</span>
-                </a>
+
+                {/* Address */}
+                <div className="flex items-start gap-2.5 text-sm text-neutral-400">
+                  <MapPin className="w-5 h-5 text-[#FF6A00] shrink-0 mt-0.5" />
+                  <span className="leading-snug">{COMPANY_INFO.address.full}</span>
+                </div>
+
+                {/* Operating Hours */}
+                <div className="flex items-start gap-2.5 text-sm text-neutral-400">
+                  <Clock className="w-5 h-5 text-[#FF6A00] shrink-0 mt-0.5" />
+                  <span>{COMPANY_INFO.operatingHours} WIB</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Column 4 — Media Sosial */}
+            <div className="space-y-4">
+              <h3 className="text-sm font-bold text-white uppercase tracking-wider">
+                Media Sosial
+              </h3>
+              <p className="text-xs text-neutral-400">
+                Ikuti perkembangan terbaru, katalog, dan portofolio kami melalui saluran resmi:
+              </p>
+              <div className="flex flex-wrap items-center gap-3 pt-1">
+                {SOCIAL_LINKS.map((item) => (
+                  <a
+                    key={item.name}
+                    href={item.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={item.label}
+                    title={item.label}
+                    className={`w-12 h-12 rounded-full flex items-center justify-center transition-all hover:scale-105 active:scale-95 ${getSocialStyle(
+                      item.name
+                    )}`}
+                  >
+                    {renderSocialIcon(item.name, 28)}
+                  </a>
+                ))}
               </div>
             </div>
           </div>
         </Container>
       </div>
 
-      {/* Bottom Copyright Strip */}
-      <div className="border-t border-[#222222] py-4 bg-black">
-        <Container className="flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-neutral-500">
-          <p>&copy; {currentYear} CV. QEE BEE. All rights reserved.</p>
-          <p className="text-neutral-500">Supplier &amp; Trading | Konveksi Custom</p>
+      {/* Footer Bottom Bar */}
+      <div className="border-t border-neutral-800 py-5">
+        <Container className="flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-neutral-500">
+          <p>© {currentYear} CV. QEE BEE. All rights reserved.</p>
+          <p>Kualitas Terbaik · Harga Kompetitif · Tepat Waktu</p>
         </Container>
       </div>
     </footer>

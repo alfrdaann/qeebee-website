@@ -6,10 +6,16 @@ import {
   Phone,
   MessageCircle,
   CheckCircle2,
+  Share2,
 } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
-import { COMPANY_INFO } from "@/constants/company";
+import { COMPANY_INFO, SOCIAL_LINKS } from "@/constants/company";
+import {
+  InstagramIcon,
+  TikTokIcon,
+  FacebookIcon,
+} from "@/components/ui/SocialIcons";
 
 export const metadata: Metadata = {
   title: `Kontak Kami | ${COMPANY_INFO.name} - Konveksi & Apparel Custom Sidoarjo`,
@@ -27,6 +33,19 @@ const waConsultUrl = `${COMPANY_INFO.whatsappUrl}?text=${encodeURIComponent(
 )}`;
 
 export default function KontakPage() {
+  const getSocialIcon = (name: string) => {
+    switch (name) {
+      case "Instagram":
+        return <InstagramIcon size={24} className="text-[#FF6A00]" />;
+      case "TikTok":
+        return <TikTokIcon size={24} className="text-[#FF6A00]" />;
+      case "Facebook":
+        return <FacebookIcon size={24} className="text-[#FF6A00]" />;
+      default:
+        return <Share2 className="w-6 h-6 text-[#FF6A00]" />;
+    }
+  };
+
   return (
     <>
       {/* Page Header */}
@@ -40,7 +59,7 @@ export default function KontakPage() {
           </h1>
           <p className="mt-4 max-w-2xl text-base sm:text-lg text-neutral-300 leading-relaxed">
             Tim kami siap membantu menentukan produk, bahan, dan spesifikasi
-            yang sesuai. Hubungi melalui WhatsApp atau kunjungi workshop kami
+            yang sesuai. Hubungi melalui WhatsApp, ikuti media sosial resmi, atau kunjungi workshop kami
             di Sidoarjo.
           </p>
         </Container>
@@ -48,10 +67,10 @@ export default function KontakPage() {
 
       {/* Contact Cards */}
       <section className="bg-[#F5F5F5] py-12 sm:py-16">
-        <Container>
+        <Container className="space-y-12">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {/* Address */}
-            <div className="p-6 rounded-xl bg-white border border-[#E5E5E5]">
+            <div className="interactive-card-subtle p-6 rounded-xl bg-white border border-[#E5E5E5]">
               <div className="p-2.5 rounded-lg bg-[#FF6A00]/10 text-[#FF6A00] w-fit">
                 <MapPin className="w-6 h-6" />
               </div>
@@ -64,7 +83,7 @@ export default function KontakPage() {
             </div>
 
             {/* Operating Hours */}
-            <div className="p-6 rounded-xl bg-white border border-[#E5E5E5]">
+            <div className="interactive-card-subtle p-6 rounded-xl bg-white border border-[#E5E5E5]">
               <div className="p-2.5 rounded-lg bg-[#FF6A00]/10 text-[#FF6A00] w-fit">
                 <Clock className="w-6 h-6" />
               </div>
@@ -79,7 +98,7 @@ export default function KontakPage() {
             </div>
 
             {/* WhatsApp */}
-            <div className="p-6 rounded-xl bg-white border border-[#E5E5E5]">
+            <div className="interactive-card-subtle p-6 rounded-xl bg-white border border-[#E5E5E5]">
               <div className="p-2.5 rounded-lg bg-[#FF6A00]/10 text-[#FF6A00] w-fit">
                 <MessageCircle className="w-6 h-6" />
               </div>
@@ -100,7 +119,7 @@ export default function KontakPage() {
             </div>
 
             {/* Phone */}
-            <div className="p-6 rounded-xl bg-white border border-[#E5E5E5]">
+            <div className="interactive-card-subtle p-6 rounded-xl bg-white border border-[#E5E5E5]">
               <div className="p-2.5 rounded-lg bg-[#FF6A00]/10 text-[#FF6A00] w-fit">
                 <Phone className="w-6 h-6" />
               </div>
@@ -108,11 +127,64 @@ export default function KontakPage() {
                 Telepon / WA
               </h2>
               <a
-                href={`tel:${COMPANY_INFO.whatsapp.replace(/[^+0-9]/g, "")}`}
+                href={`tel:${COMPANY_INFO.whatsappIntl.replace(/[^+0-9]/g, "")}`}
                 className="mt-2 inline-block text-sm text-neutral-600 leading-relaxed hover:text-[#FF6A00] transition-colors"
               >
                 {COMPANY_INFO.whatsapp}
               </a>
+            </div>
+          </div>
+
+          {/* Official Social Media Section */}
+          <div className="space-y-6">
+            <div className="space-y-1">
+              <span className="text-xs font-bold text-[#FF6A00] uppercase tracking-wider">
+                Saluran Informasi
+              </span>
+              <h2 className="text-2xl font-bold text-[#111111] tracking-tight">
+                Media Sosial Resmi CV. QEE BEE
+              </h2>
+              <p className="text-sm text-neutral-600 leading-relaxed max-w-xl">
+                Ikuti perkembangan proyek, dokumentasi hasil produksi seragam, video proses jahit, dan pengumuman terbaru kami.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {SOCIAL_LINKS.map((item) => (
+                <a
+                  key={item.name}
+                  href={item.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={item.label}
+                  className="interactive-card group p-6 rounded-2xl bg-white border border-[#E5E5E5] hover:border-[#FF6A00]/50 flex flex-col justify-between"
+                >
+                  <div className="space-y-4">
+                    <div className="flex items-center justify-between">
+                      <div className="p-3 rounded-xl bg-[#FF6A00]/10 text-[#FF6A00] group-hover:scale-105 transition-transform">
+                        {getSocialIcon(item.name)}
+                      </div>
+                      <span className="text-[11px] font-bold uppercase tracking-wider text-neutral-400 group-hover:text-[#FF6A00] transition-colors">
+                        Buka Akun →
+                      </span>
+                    </div>
+
+                    <div>
+                      <h3 className="text-base font-bold text-[#111111] group-hover:text-[#FF6A00] transition-colors">
+                        {item.name}
+                      </h3>
+                      <p className="text-sm text-neutral-500 mt-1">
+                        {item.username}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="pt-4 mt-4 border-t border-[#F0F0F0] text-xs font-semibold text-[#111111] group-hover:text-[#FF6A00] flex items-center justify-between transition-colors">
+                    <span>Kunjungi {item.name} Resmi</span>
+                    <span className="text-sm">↗</span>
+                  </div>
+                </a>
+              ))}
             </div>
           </div>
         </Container>
@@ -122,7 +194,7 @@ export default function KontakPage() {
       <section className="bg-white py-12 sm:py-16 border-t border-[#E5E5E5]">
         <Container>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div className="flex items-start gap-3.5 p-5 rounded-xl bg-[#F5F5F5] border border-[#E5E5E5]">
+            <div className="interactive-card-subtle flex items-start gap-3.5 p-5 rounded-xl bg-[#F5F5F5] border border-[#E5E5E5]">
               <div className="p-2.5 rounded-lg bg-[#FF6A00]/10 text-[#FF6A00] shrink-0">
                 <CheckCircle2 className="w-6 h-6" />
               </div>
@@ -137,7 +209,7 @@ export default function KontakPage() {
               </div>
             </div>
 
-            <div className="flex items-start gap-3.5 p-5 rounded-xl bg-[#F5F5F5] border border-[#E5E5E5]">
+            <div className="interactive-card-subtle flex items-start gap-3.5 p-5 rounded-xl bg-[#F5F5F5] border border-[#E5E5E5]">
               <div className="p-2.5 rounded-lg bg-[#FF6A00]/10 text-[#FF6A00] shrink-0">
                 <Truck className="w-6 h-6" />
               </div>
@@ -152,7 +224,7 @@ export default function KontakPage() {
               </div>
             </div>
 
-            <div className="flex items-start gap-3.5 p-5 rounded-xl bg-[#F5F5F5] border border-[#E5E5E5] sm:col-span-2 lg:col-span-1">
+            <div className="interactive-card-subtle flex items-start gap-3.5 p-5 rounded-xl bg-[#F5F5F5] border border-[#E5E5E5] sm:col-span-2 lg:col-span-1">
               <div className="p-2.5 rounded-lg bg-[#FF6A00]/10 text-[#FF6A00] shrink-0">
                 <Clock className="w-6 h-6" />
               </div>

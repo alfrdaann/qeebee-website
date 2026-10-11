@@ -28,3 +28,85 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+/* ─────────────────────────────────────────────────────────
+   Interactive Card System (Hover lift, spring press, focus outline)
+   ───────────────────────────────────────────────────────── */
+.interactive-card {
+  transition: transform 220ms cubic-bezier(0.2, 0.8, 0.2, 1),
+              box-shadow 220ms cubic-bezier(0.2, 0.8, 0.2, 1),
+              border-color 220ms ease;
+  will-change: transform;
+}
+
+.interactive-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px -6px rgba(0, 0, 0, 0.08), 0 4px 8px -4px rgba(0, 0, 0, 0.03);
+}
+
+.interactive-card:active {
+  transform: translateY(0) scale(0.985);
+  transition-duration: 90ms;
+}
+
+.interactive-card:focus-visible {
+  outline: 2px solid #FF6A00;
+  outline-offset: 2px;
+}
+
+/* Subtle variant for informational / showcase cards */
+.interactive-card-subtle {
+  transition: transform 220ms cubic-bezier(0.2, 0.8, 0.2, 1),
+              box-shadow 220ms cubic-bezier(0.2, 0.8, 0.2, 1),
+              border-color 220ms ease;
+  will-change: transform;
+}
+
+.interactive-card-subtle:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.06);
+}
+
+.interactive-card-subtle:active {
+  transform: translateY(0) scale(0.99);
+  transition-duration: 90ms;
+}
+
+.interactive-card-subtle:focus-visible {
+  outline: 2px solid #FF6A00;
+  outline-offset: 2px;
+}
+
+/* Dark background variant */
+.interactive-card-dark {
+  transition: transform 220ms cubic-bezier(0.2, 0.8, 0.2, 1),
+              box-shadow 220ms cubic-bezier(0.2, 0.8, 0.2, 1),
+              border-color 220ms ease;
+  will-change: transform;
+}
+
+.interactive-card-dark:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 24px -6px rgba(0, 0, 0, 0.6);
+  border-color: rgba(255, 106, 0, 0.4);
+}
+
+.interactive-card-dark:active {
+  transform: translateY(0) scale(0.985);
+  transition-duration: 90ms;
+}
+
+.interactive-card-dark:focus-visible {
+  outline: 2px solid #FF6A00;
+  outline-offset: 2px;
+}
+
+/* Respect user accessibility preference for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .interactive-card,
+  .interactive-card-subtle,
+  .interactive-card-dark {
+    transform: none !important;
+    transition: none !important;
+  }
+}

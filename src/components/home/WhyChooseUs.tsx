@@ -58,7 +58,7 @@ export const WhyChooseUs: React.FC = () => {
               {features.map((item) => (
                 <div
                   key={item.title}
-                  className="flex items-start gap-3.5 p-4 rounded-xl bg-[#1A1A1A] border border-neutral-800"
+                  className="interactive-card-dark flex items-start gap-3.5 p-4 rounded-xl bg-[#1A1A1A] border border-neutral-800"
                 >
                   <div className="p-2.5 rounded-lg bg-[#FF6A00]/10 shrink-0 mt-0.5 border border-[#FF6A00]/20">
                     {item.icon}

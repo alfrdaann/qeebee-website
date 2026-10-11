@@ -93,7 +93,7 @@ export default function FAQPage() {
             return (
               <div
                 key={item.id}
-                className="bg-white rounded-xl border border-[#E5E5E5] overflow-hidden transition-all duration-200"
+                className="interactive-card-subtle bg-white rounded-xl border border-[#E5E5E5] overflow-hidden"
               >
                 <button
                   type="button"

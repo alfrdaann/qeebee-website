@@ -52,7 +52,7 @@ export default function ProdukPage() {
             {PRODUCT_CATEGORIES.map((category) => (
               <div
                 key={category.id}
-                className="group bg-white rounded-2xl border border-[#E5E5E5] overflow-hidden hover:border-[#FF6A00]/40 hover:shadow-md transition-all duration-300 flex flex-col justify-between"
+                className="interactive-card group bg-white rounded-2xl border border-[#E5E5E5] overflow-hidden hover:border-[#FF6A00]/40 flex flex-col justify-between"
               >
                 <div>
                   <Link

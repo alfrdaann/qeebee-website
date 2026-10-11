@@ -38,7 +38,7 @@ export const PortfolioSection: React.FC = () => {
             <Link
               key={item.id}
               href="/portofolio"
-              className="group bg-[#F9F9F9] rounded-xl border border-[#E5E5E5] overflow-hidden hover:border-[#FF6A00]/50 hover:shadow-md transition-all duration-200 flex flex-col"
+              className="interactive-card group bg-[#F9F9F9] rounded-xl border border-[#E5E5E5] overflow-hidden hover:border-[#FF6A00]/50 flex flex-col"
             >
               <div className="relative aspect-square w-full bg-[#F5F5F5] overflow-hidden">
                 <Image

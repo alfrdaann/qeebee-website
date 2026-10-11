@@ -318,8 +318,8 @@ export function QuoteRequestForm({ initialCategory }: QuoteRequestFormProps) {
       setResult({
         success: false,
         message: isFetchErr
-          ? "Gagal menghubungi server aplikasi atau ukuran data melebihi batas. Silakan periksa koneksi internet Anda atau hubungi kami langsung via WhatsApp di +62 812-3505-0097."
-          : `Gagal mengirim pengajuan (${rawMsg}). Silakan coba kembali atau hubungi kami langsung via WhatsApp di +62 812-3505-0097.`,
+          ? `Gagal menghubungi server aplikasi atau ukuran data melebihi batas. Silakan periksa koneksi internet Anda atau hubungi kami langsung via WhatsApp di ${COMPANY_INFO.whatsapp}.`
+          : `Gagal mengirim pengajuan (${rawMsg}). Silakan coba kembali atau hubungi kami langsung via WhatsApp di ${COMPANY_INFO.whatsapp}.`,
       });
       setTimeout(() => {
         notificationRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });

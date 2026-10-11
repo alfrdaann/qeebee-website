@@ -74,7 +74,7 @@ export const ProductionProcess: React.FC = () => {
           {steps.map((s, idx) => (
             <div
               key={s.num}
-              className="bg-white rounded-xl p-4 border border-[#E5E5E5] flex flex-col justify-between space-y-3 relative group hover:border-[#FF6A00]/50 transition-all duration-200"
+              className="interactive-card-subtle bg-white rounded-xl p-4 border border-[#E5E5E5] flex flex-col justify-between space-y-3 relative group hover:border-[#FF6A00]/50"
             >
               {/* Number Circle Badge */}
               <div className="flex items-center justify-between">

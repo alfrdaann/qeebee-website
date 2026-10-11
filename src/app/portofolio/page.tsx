@@ -44,7 +44,7 @@ export default function PortofolioPage() {
             {PORTFOLIO_ITEMS.map((item) => (
               <div
                 key={item.id}
-                className="group bg-white rounded-xl border border-[#E5E5E5] overflow-hidden hover:border-[#FF6A00]/40 hover:shadow-md transition-all duration-300 flex flex-col"
+                className="interactive-card group bg-white rounded-xl border border-[#E5E5E5] overflow-hidden hover:border-[#FF6A00]/40 flex flex-col"
               >
                 <div className="relative aspect-[4/3] w-full bg-[#F5F5F5] overflow-hidden">
                   <Image

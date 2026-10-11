@@ -35,7 +35,7 @@ export const ProductCategories: React.FC = () => {
             <Link
               key={cat.id}
               href={`/produk`}
-              className="group bg-white rounded-xl border border-[#E5E5E5] overflow-hidden hover:border-[#FF6A00]/50 hover:shadow-md transition-all duration-200 flex flex-col justify-between"
+              className="interactive-card group bg-white rounded-xl border border-[#E5E5E5] overflow-hidden hover:border-[#FF6A00]/50 flex flex-col justify-between"
             >
               {/* Image Container */}
               <div className="relative aspect-[4/3] w-full bg-[#F9F9F9] overflow-hidden">

@@ -2,6 +2,7 @@
 
 import { createClient } from "@/lib/supabase/server";
 import type { QuoteRequestInsert } from "@/types/database";
+import { COMPANY_INFO } from "@/constants/company";
 
 // ─────────────────────────────────────────────────────────
 // Configuration check helper
@@ -113,7 +114,7 @@ export async function submitQuoteRequest(formData: FormData): Promise<SubmitQuot
       return {
         success: false,
         message:
-          "Koneksi database Supabase belum terkonfigurasi di server (masih menggunakan konfigurasi bawaan / placeholder di .env.local). Silakan hubungi kami langsung via WhatsApp di +62 812-3505-0097 untuk mendapatkan penawaran cepat.",
+          `Koneksi database Supabase belum terkonfigurasi di server (masih menggunakan konfigurasi bawaan / placeholder di .env.local). Silakan hubungi kami langsung via WhatsApp di ${COMPANY_INFO.whatsapp} untuk mendapatkan penawaran cepat.`,
         details: "Supabase credentials are placeholders in .env.local",
       };
     }
@@ -329,7 +330,7 @@ export async function submitQuoteRequest(formData: FormData): Promise<SubmitQuot
     return {
       success: false,
       message: isNetworkError
-        ? "Koneksi ke database tidak dapat dijangkau. Silakan hubungi kami langsung melalui WhatsApp di +62 812-3505-0097 untuk respon cepat."
+        ? `Koneksi ke database tidak dapat dijangkau. Silakan hubungi kami langsung melalui WhatsApp di ${COMPANY_INFO.whatsapp} untuk respon cepat.`
         : `Permintaan belum berhasil dikirim (${rawMsg}). Silakan periksa kembali data Anda dan coba lagi.`,
     };
   }

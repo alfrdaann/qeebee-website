@@ -103,7 +103,7 @@ export default function CaraOrderPage() {
             {STEPS_FULL.map((s, idx) => (
               <div
                 key={s.step}
-                className="bg-white rounded-xl border border-[#E5E5E5] p-5 sm:p-7 flex flex-col sm:flex-row items-start gap-5 hover:border-[#FF6A00]/40 transition-all duration-200"
+                className="interactive-card-subtle bg-white rounded-xl border border-[#E5E5E5] p-5 sm:p-7 flex flex-col sm:flex-row items-start gap-5 hover:border-[#FF6A00]/40"
               >
                 <div className="w-10 h-10 rounded-full bg-[#FF6A00] text-white font-extrabold text-sm flex items-center justify-center shrink-0">
                   {s.step}

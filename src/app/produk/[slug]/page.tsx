@@ -234,7 +234,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
               <Link
                 key={c.id}
                 href={`/produk/${c.id}`}
-                className="group bg-[#F9F9F9] rounded-xl border border-[#E5E5E5] p-3 text-center hover:border-[#FF6A00]/50 transition-all duration-200"
+                className="interactive-card group bg-[#F9F9F9] rounded-xl border border-[#E5E5E5] p-3 text-center hover:border-[#FF6A00]/50"
               >
                 <div className="relative aspect-[4/3] w-full mb-2">
                   <Image

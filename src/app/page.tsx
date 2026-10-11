@@ -7,6 +7,8 @@ import { PortfolioSection } from "@/components/home/PortfolioSection";
 import { WhyChooseUs } from "@/components/home/WhyChooseUs";
 import { ProductionProcess } from "@/components/home/ProductionProcess";
 import { RequestQuoteCTA } from "@/components/home/RequestQuoteCTA";
+import { InfoCards } from "@/components/home/InfoCards";
+import { WorkshopLocation } from "@/components/home/WorkshopLocation";
 
 export default function Home() {
   return (
@@ -32,8 +34,14 @@ export default function Home() {
       {/* 8. Production Process */}
       <ProductionProcess />
 
-      {/* 9. Request Quote CTA */}
+      {/* 9. Pre-footer CTA Hero */}
       <RequestQuoteCTA />
+
+      {/* 10. Info Cards (WhatsApp, Jam, Alamat, Social) */}
+      <InfoCards />
+
+      {/* 11. Workshop Location with Google Maps */}
+      <WorkshopLocation />
     </>
   );
 }
